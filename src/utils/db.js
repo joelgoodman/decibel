@@ -1,17 +1,11 @@
-import { Sequelize } from "sequelize";
+import { connectDB } from "../../utils/db";
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-	dialect: "postgres",
-});
-
-const connectDB = async () => {
+export default async function handler(req, res) {
 	try {
-		await sequelize.authenticate();
-		console.log("Connection has been established successfully.");
+		await connectDB();
+		res.status(200).json({ success: true });
 	} catch (error) {
-		console.error("Unable to connect to the database:", error);
+		console.error(error); // Log the error for detailed debugging
+		res.status(500).json({ success: false, error: error.message });
 	}
-};
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { sequelize, connectDB };
+}
