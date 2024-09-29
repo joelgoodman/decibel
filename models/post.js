@@ -26,7 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     views: DataTypes.INTEGER,
     likes: DataTypes.INTEGER,
     commentsEnabled: DataTypes.BOOLEAN,
-    slug: DataTypes.STRING
+    slug: DataTypes.STRING,
+    isNewsletter: DataTypes.BOOLEAN,
+    subscriberLevel: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Post',
