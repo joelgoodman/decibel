@@ -5,5 +5,11 @@
 			"src": "src/pages/api/test-db.js",
 			"use": "@vercel/node"
 		}
+	],
+	"routes": [
+		{
+			"src": "/api/test-db",
+			"dest": "src/pages/api/test-db.js"
+		}
 	]
 }
