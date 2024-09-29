@@ -4,7 +4,7 @@ const sequelize = new Sequelize(process.env.POSTGRES_URL, {
 	dialect: "postgres",
 });
 
-const connectDB = async () => {
+export const connectDB = async () => {
 	try {
 		console.log("POSTGRES_URL:", process.env.POSTGRES_URL); // Log the POSTGRES_URL
 		await sequelize.authenticate();
@@ -14,5 +14,4 @@ const connectDB = async () => {
 	}
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { sequelize, connectDB };
+export default sequelize;
