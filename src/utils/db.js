@@ -1,12 +1,12 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize(process.env.POSTGRES_URL, {
 	dialect: "postgres",
 });
 
 const connectDB = async () => {
 	try {
-		console.log("DATABASE_URL:", process.env.DATABASE_URL); // Log the DATABASE_URL
+		console.log("POSTGRES_URL:", process.env.POSTGRES_URL); // Log the POSTGRES_URL
 		await sequelize.authenticate();
 		console.log("Connection has been established successfully.");
 	} catch (error) {
