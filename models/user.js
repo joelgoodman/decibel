@@ -1,33 +1,42 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  User.init({
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    bio: DataTypes.TEXT,
-    avatar: DataTypes.STRING,
-    role: DataTypes.STRING,
-    status: DataTypes.STRING,
-    signUpDate: DataTypes.DATE,
-    subscriberLevel: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'User',
-  });
-  return User;
+import db from "../utils/db";
+
+const User = {
+	create: async (
+		username,
+		email,
+		password,
+		firstName,
+		lastName,
+		bio,
+		avatar,
+		role,
+		status,
+		signUpDate,
+		subscriberLevel
+	) => {
+		return db.one(
+			"INSERT INTO users(username, email, password, firstName, lastName, bio, avatar, role, status, signUpDate, subscriberLevel) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *",
+			[
+				username,
+				email,
+				password,
+				firstName,
+				lastName,
+				bio,
+				avatar,
+				role,
+				status,
+				signUpDate,
+				subscriberLevel,
+			]
+		);
+	},
+	findAll: async () => {
+		return db.any("SELECT * FROM users");
+	},
+	findById: async (id) => {
+		return db.oneOrNone("SELECT * FROM users WHERE id = $1", [id]);
+	},
 };
+
+module.exports = User;

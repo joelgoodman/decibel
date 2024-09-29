@@ -1,35 +1,43 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Page extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  Page.init({
-    title: DataTypes.STRING,
-    content: DataTypes.TEXT,
-    publishDate: DataTypes.DATE,
-    coverImage: DataTypes.STRING,
-    authorId: DataTypes.INTEGER,
-    tags: DataTypes.ARRAY,
-    status: DataTypes.STRING,
-    excerpt: DataTypes.STRING,
-    categories: DataTypes.ARRAY,
-    views: DataTypes.INTEGER,
-    likes: DataTypes.INTEGER,
-    commentsEnabled: DataTypes.BOOLEAN,
-    slug: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Page',
-  });
-  return Page;
+import db from "../utils/db";
+
+const Page = {
+	create: async (
+		title,
+		content,
+		publishDate,
+		coverImage,
+		authorId,
+		tags,
+		status,
+		excerpt,
+		categories,
+		views,
+		likes,
+		commentsEnabled,
+		slug
+	) => {
+		return db.one(
+			"INSERT INTO pages(title, content, publishDate, coverImage, authorId, tags, status, excerpt, categories, views, likes, commentsEnabled, slug) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *",
+			[
+				title,
+				content,
+				publishDate,
+				coverImage,
+				authorId,
+				tags,
+				status,
+				excerpt,
+				categories,
+				views,
+				likes,
+				commentsEnabled,
+				slug,
+			]
+		);
+	},
+	findAll: async () => db.any("SELECT * FROM pages"),
+	findById: async (id) =>
+		db.oneOrNone("SELECT * FROM pages WHERE id = $1", [id]),
 };
+
+module.exports = Page;
