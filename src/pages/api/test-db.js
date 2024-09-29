@@ -1,11 +1,10 @@
-import { connectDB } from "../../utils/db";
+import db from "../../utils/db";
 
 export default async function handler(req, res) {
 	try {
-		await connectDB();
-		res.status(200).json({ success: true });
+		const result = await db.any("SELECT 1");
+		res.status(200).json({ success: true, result });
 	} catch (error) {
-		console.error(error); // Log the error for detailed debugging
 		res.status(500).json({ success: false, error: error.message });
 	}
 }

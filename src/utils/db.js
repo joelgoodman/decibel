@@ -1,17 +1,5 @@
-import { Sequelize } from "sequelize";
+import pgPromise from "pg-promise";
+const pgp = pgPromise();
+const db = pgp(process.env.POSTGRES_URL);
 
-const sequelize = new Sequelize(process.env.POSTGRES_URL, {
-	dialect: "postgres",
-});
-
-export const connectDB = async () => {
-	try {
-		console.log("POSTGRES_URL:", process.env.POSTGRES_URL); // Log the POSTGRES_URL
-		await sequelize.authenticate();
-		console.log("Connection has been established successfully.");
-	} catch (error) {
-		console.error("Unable to connect to the database:", error);
-	}
-};
-
-export default sequelize;
+export default db;
