@@ -1,4 +1,4 @@
-# Modern CMS with Podcast Management
+# Decibel: Modern CMS with Podcast and Newsletter Management
 
 A full-featured, modern CMS built with Next.js, featuring advanced podcast management, content publishing, and user management capabilities.
 
