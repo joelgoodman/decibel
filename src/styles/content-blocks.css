@@ -1,0 +1,25 @@
+@layer components {
+  .aspect-w-16 {
+    position: relative;
+    padding-bottom: 56.25%;
+  }
+
+  .aspect-h-9 {
+    position: relative;
+    padding-bottom: 56.25%;
+  }
+
+  .plyr {
+    --plyr-color-main: theme('colors.primary.500');
+    --plyr-audio-controls-background: theme('colors.background');
+    --plyr-audio-control-color: theme('colors.foreground');
+    border-radius: theme('borderRadius.lg');
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .plyr {
+      --plyr-audio-controls-background: theme('colors.gray.800');
+      --plyr-audio-control-color: theme('colors.gray.100');
+    }
+  }
+}

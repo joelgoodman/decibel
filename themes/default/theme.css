@@ -1,0 +1,82 @@
+:root {
+  /* Colors */
+  --primary: theme('colors.primary');
+  --secondary: theme('colors.secondary');
+  --accent: theme('colors.accent');
+  --background: theme('colors.background');
+  --text: theme('colors.text');
+
+  /* Typography */
+  --font-family: theme('typography.fontFamily');
+  --heading-font-family: theme('typography.headings.fontFamily');
+  --heading-font-weight: theme('typography.headings.fontWeight');
+
+  /* Spacing */
+  --spacing-unit: theme('spacing.unit');
+  --container-max-width: theme('spacing.container.maxWidth');
+  --container-padding: theme('spacing.container.padding');
+
+  /* Border & Shadow */
+  --border-radius: theme('borderRadius');
+  --box-shadow: theme('boxShadow');
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-family);
+  color: var(--text);
+  background-color: var(--background);
+  line-height: 1.5;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Layout */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Components */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+}
+
+/* Utilities */
+.rounded {
+  border-radius: var(--border-radius);
+}
+
+.shadow {
+  box-shadow: var(--box-shadow);
+}

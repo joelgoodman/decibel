@@ -1,0 +1,108 @@
+// This is your Prisma schema file
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  firstName     String?
+  lastName      String?
+  role          String    @default("USER")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  auditLogs     AuditLog[]
+  analyticsEvents AnalyticsEvent[]
+}
+
+enum SettingType {
+  GENERAL
+  EMAIL
+  SECURITY
+  THEME
+  MENU
+  INTEGRATION
+}
+
+model Settings {
+  id        String      @id @default(cuid())
+  key       String      @unique
+  value     Json
+  type      SettingType
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model AuditLog {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action      String
+  entityType  String
+  entityId    String
+  metadata    Json?
+  createdAt   DateTime  @default(now())
+
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}
+
+model EmailTemplate {
+  id          String    @id @default(cuid())
+  name        String
+  subject     String
+  content     String    @db.Text
+  variables   String[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model PerformanceMetric {
+  id              String    @id @default(cuid())
+  name            String
+  value           Float
+  rating          String
+  path            String
+  connectionSpeed String?
+  navigationType  String?
+  createdAt       DateTime  @default(now())
+}
+
+model Menu {
+  id        String   @id @default(cuid())
+  name      String
+  location  String
+  items     Json
+  settings  Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SecureCredential {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  iv        String
+  tag       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AnalyticsEvent {
+  id          String    @id @default(cuid())
+  name        String
+  properties  Json?
+  userId      String?
+  user        User?     @relation(fields: [userId], references: [id])
+  timestamp   DateTime  @default(now())
+
+  @@index([name])
+  @@index([userId])
+  @@index([timestamp])
+}
