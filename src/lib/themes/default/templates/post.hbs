@@ -1,0 +1,58 @@
+<article class="post">
+  <header class="post-header">
+    <div class="container">
+      <h1 class="post-title">{{title}}</h1>
+      
+      <div class="post-meta">
+        {{#if author}}
+          <div class="post-author">
+            <img src="{{author.avatar}}" alt="{{author.name}}" class="author-avatar">
+            <span>By {{author.name}}</span>
+          </div>
+        {{/if}}
+        
+        <time datetime="{{date format="YYYY-MM-DD"}}">
+          {{date format="MMMM D, YYYY"}}
+        </time>
+        
+        {{#if readingTime}}
+          <span class="reading-time">{{readingTime}} min read</span>
+        {{/if}}
+      </div>
+
+      {{#if featured_image}}
+        <figure class="post-featured-image">
+          <img src="{{featured_image}}" alt="{{title}}">
+          {{#if featured_image_caption}}
+            <figcaption>{{featured_image_caption}}</figcaption>
+          {{/if}}
+        </figure>
+      {{/if}}
+    </div>
+  </header>
+
+  <div class="post-content">
+    <div class="container">
+      <div class="content">
+        {{{content}}}
+      </div>
+    </div>
+  </div>
+
+  <footer class="post-footer">
+    <div class="container">
+      {{#if tags}}
+        <div class="post-tags">
+          {{#each tags}}
+            <a href="{{url}}" class="tag">{{name}}</a>
+          {{/each}}
+        </div>
+      {{/if}}
+
+      {{> share}}
+      {{> author-bio}}
+      {{> related-posts}}
+      {{> comments}}
+    </div>
+  </footer>
+</article>

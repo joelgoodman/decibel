@@ -1,0 +1,70 @@
+:root {
+  /* Colors */
+  --color-primary: #4f46e5;
+  --color-primary-dark: #4338ca;
+  --color-primary-light: #818cf8;
+  
+  --color-secondary: #f3f4f6;
+  --color-secondary-dark: #e5e7eb;
+  
+  /* Typography */
+  --font-family-body: Inter, system-ui, sans-serif;
+  --font-family-heading: var(--font-family-body);
+  --font-family-mono: 'JetBrains Mono', monospace;
+  
+  /* Spacing */
+  --container-padding: clamp(1rem, 5vw, 2rem);
+  --content-width: 65ch;
+  --sidebar-width: 300px;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-family-body);
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Layout */
+.header {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+@media (min-width: 1024px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
+  }
+}
+
+.zone {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+}

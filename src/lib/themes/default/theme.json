@@ -1,0 +1,140 @@
+{
+  "name": "default",
+  "version": "1.0.0",
+  "description": "Default theme with modern design and full customization",
+  "author": "StackBlitz",
+  "license": "MIT",
+  "templates": {
+    "default": "{{> header }}{{> content}}{{> footer}}",
+    "post": "{{> header }}<article class=\"post\">{{> post-header}}{{content}}{{> post-footer}}</article>{{> footer}}",
+    "page": "{{> header }}<div class=\"page\">{{content}}</div>{{> footer}}",
+    "archive": "{{> header }}<div class=\"archive\">{{> archive-header}}{{> post-list}}{{> pagination}}</div>{{> footer}}"
+  },
+  "partials": {
+    "header": "{{> navbar }}",
+    "footer": "<footer class=\"site-footer\"><div class=\"container\">{{> footer-widgets}}</div></footer>",
+    "navbar": "<nav class=\"navbar\"><div class=\"container\"><div class=\"navbar__brand\">{{> logo}}</div><div class=\"navbar__menu\">{{> menu}}</div></div></nav>",
+    "post-header": "<header class=\"post-header\"><h1>{{title}}</h1>{{> meta}}</header>",
+    "post-footer": "<footer class=\"post-footer\">{{> tags}}{{> share}}{{> author}}</footer>",
+    "archive-header": "<header class=\"archive-header\"><h1>{{archive.title}}</h1>{{#if archive.description}}<div class=\"archive-description\">{{archive.description}}</div>{{/if}}</header>"
+  },
+  "customization": {
+    "colors": {
+      "primary": {
+        "value": "#4f46e5",
+        "label": "Primary Color"
+      },
+      "secondary": {
+        "value": "#f3f4f6",
+        "label": "Secondary Color"
+      },
+      "accent": {
+        "value": "#818cf8",
+        "label": "Accent Color"
+      },
+      "text": {
+        "value": "#1f2937",
+        "label": "Text Color"
+      },
+      "background": {
+        "value": "#ffffff",
+        "label": "Background Color"
+      }
+    },
+    "typography": {
+      "fonts": {
+        "body": {
+          "family": ["Inter", "system-ui", "sans-serif"],
+          "weights": [400, 500, 600]
+        },
+        "heading": {
+          "family": ["Inter", "system-ui", "sans-serif"],
+          "weights": [600, 700]
+        },
+        "mono": {
+          "family": ["JetBrains Mono", "monospace"],
+          "weights": [400]
+        }
+      },
+      "sizes": {
+        "base": "16px",
+        "scale": 1.25,
+        "levels": {
+          "xs": "0.75rem",
+          "sm": "0.875rem",
+          "base": "1rem",
+          "lg": "1.125rem",
+          "xl": "1.25rem",
+          "2xl": "1.5rem",
+          "3xl": "1.875rem",
+          "4xl": "2.25rem"
+        }
+      }
+    },
+    "spacing": {
+      "unit": "4px",
+      "scale": {
+        "0": "0",
+        "1": "0.25rem",
+        "2": "0.5rem",
+        "3": "0.75rem",
+        "4": "1rem",
+        "6": "1.5rem",
+        "8": "2rem",
+        "12": "3rem",
+        "16": "4rem"
+      }
+    },
+    "layout": {
+      "containerWidth": "1200px",
+      "contentWidth": "720px",
+      "sidebarWidth": "300px",
+      "gaps": {
+        "sm": "1rem",
+        "md": "2rem",
+        "lg": "4rem"
+      }
+    }
+  },
+  "features": {
+    "darkMode": true,
+    "responsiveImages": true,
+    "lazyLoading": true,
+    "syntaxHighlighting": true,
+    "comments": true,
+    "search": true,
+    "newsletter": true
+  },
+  "menus": {
+    "primary": {
+      "location": "header",
+      "maxDepth": 2
+    },
+    "footer": {
+      "location": "footer",
+      "maxDepth": 1
+    }
+  },
+  "widgets": {
+    "sidebar": {
+      "location": "sidebar",
+      "maxWidgets": 6
+    },
+    "footer": {
+      "location": "footer",
+      "columns": 4,
+      "maxWidgetsPerColumn": 3
+    }
+  },
+  "contentTypes": {
+    "post": {
+      "templates": ["default", "featured", "video"],
+      "taxonomies": ["category", "tag"],
+      "supports": ["author", "thumbnail", "excerpt", "comments"]
+    },
+    "page": {
+      "templates": ["default", "full-width", "landing"],
+      "supports": ["thumbnail", "custom-fields"]
+    }
+  }
+}

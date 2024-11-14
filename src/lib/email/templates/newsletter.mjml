@@ -1,0 +1,50 @@
+<mjml>
+  <mj-head>
+    <mj-title>{{post.title}}</mj-title>
+    <mj-include path="./partials/styles.mjml" />
+  </mj-head>
+  <mj-body background-color="#f9fafb">
+    <mj-include path="./partials/header.mjml" />
+
+    <mj-section>
+      <mj-column background-color="#ffffff" padding="32px" border-radius="8px">
+        <mj-text>
+          <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">
+            {{post.title}}
+          </h1>
+          
+          {{#if post.description}}
+            <p style="color: #6b7280; margin-bottom: 24px;">
+              {{post.description}}
+            </p>
+          {{/if}}
+        </mj-text>
+
+        {{#if post.featured_image}}
+          <mj-image
+            src="{{post.featured_image}}"
+            alt="{{post.title}}"
+            width="600px"
+            padding-bottom="24px"
+            border-radius="8px"
+          />
+        {{/if}}
+
+        <mj-text>
+          {{post.excerpt}}
+        </mj-text>
+
+        <mj-button
+          href="{{post.url}}"
+          background-color="#4f46e5"
+          border-radius="6px"
+          font-weight="500"
+        >
+          Read More
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <mj-include path="./partials/footer.mjml" />
+  </mj-body>
+</mjml>

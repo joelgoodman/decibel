@@ -1,0 +1,48 @@
+<mjml>
+  <mj-head>
+    <mj-title>Welcome to {{site_name}}</mj-title>
+    <mj-include path="./partials/styles.mjml" />
+  </mj-head>
+  <mj-body background-color="#f9fafb">
+    <mj-include path="./partials/header.mjml" />
+
+    <mj-section>
+      <mj-column background-color="#ffffff" padding="32px" border-radius="8px">
+        <mj-text>
+          <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">
+            Welcome to {{site_name}}!
+          </h1>
+          
+          <p>Hi {{subscriber.name}},</p>
+          
+          <p>Thank you for subscribing to our newsletter. We're excited to share our latest content with you.</p>
+          
+          <p>Here's what you can expect:</p>
+        </mj-text>
+
+        <mj-text padding-left="24px">
+          <ul style="margin: 16px 0;">
+            <li>Regular updates on new content</li>
+            <li>Exclusive subscriber-only content</li>
+            <li>Early access to new features</li>
+          </ul>
+        </mj-text>
+
+        <mj-text>
+          <p>You can manage your email preferences at any time using the links below.</p>
+        </mj-text>
+
+        <mj-button
+          href="{{preferences_url}}"
+          background-color="#4f46e5"
+          border-radius="6px"
+          font-weight="500"
+        >
+          Manage Preferences
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <mj-include path="./partials/footer.mjml" />
+  </mj-body>
+</mjml>

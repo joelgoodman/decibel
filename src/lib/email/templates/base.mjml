@@ -1,0 +1,49 @@
+<mjml>
+  <mj-head>
+    <mj-title>{{title}}</mj-title>
+    <mj-font name="Inter" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+    <mj-attributes>
+      <mj-all font-family="Inter, system-ui, sans-serif" />
+      <mj-text font-size="16px" color="#1f2937" line-height="24px" />
+      <mj-section padding="0px" />
+      <mj-column padding="0px" />
+    </mj-attributes>
+    <mj-style>
+      .link { color: #4f46e5; text-decoration: none; }
+      .footer { color: #6b7280; font-size: 14px; }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#f9fafb">
+    <mj-section padding="24px">
+      <mj-column>
+        <mj-image
+          src="{{logo_url}}"
+          alt="{{site_name}}"
+          align="center"
+          width="120px"
+          padding-bottom="24px"
+        />
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column background-color="#ffffff" padding="32px" border-radius="8px">
+        <mj-text>
+          {{content}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section padding="24px">
+      <mj-column>
+        <mj-text align="center" css-class="footer">
+          <p>{{site_name}}</p>
+          <p>
+            <a href="{{unsubscribe_url}}" class="link">Unsubscribe</a> •
+            <a href="{{preferences_url}}" class="link">Email Preferences</a>
+          </p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
